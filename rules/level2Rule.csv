@@ -1,0 +1,5 @@
+﻿input,output,comment
+"re.compile(""from|to|since|until|between"").search(current)","f""<{match.group()}>""",
+is_preposition(current),"postDP_weight(inputLst, current_pos, 0.5)","if the current is a preposition, the DP after it is likely a time"
+is_noun(current),"preDP_weight(inputLst, current_pos, -1)","if the current is a noun, the DP before it is likely not a time"
+"re.compile(""<from>|<to>|<since>|<until>|<between>"").search(current)","match.group().strip(""<>"")",

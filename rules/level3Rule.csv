@@ -1,0 +1,9 @@
+﻿input,output,comment
+"re.compile(""from|since"").search(current)","DateRange(postDP(inputLst, current_pos), None) if postDP(inputLst, current_pos) else current",convert 'from' 'since' to a DR without latter DP
+"re.compile(""to|until"").search(current)","DateRange(None, postDP(inputLst, current_pos)) if postDP(inputLst, current_pos) else current",convert 'to' 'until' to a DR without former DP
+is_formerDR(current),"DateRange(current.from_DP, postpDR(inputLst, current_pos).to_DP) if postpDR(inputLst, current_pos) else current","if find a DR without latter DP, find the next DR without former DP, and combine them"
+is_day(current),"multi(current, -1) if find_last(inputLst, current_pos) else current",
+is_day(current),"multi(current, 1) if find_next(inputLst, current_pos) else current",
+is_day(current),"DateRange(add(DCT, day2year(current)), DCT) if find_year(inputLst, current_pos) else current",
+is_day(current),"DateRange(add(DCT, day2year(multi(current, 10))), DCT) if find_decade(inputLst, current_pos) else current",
+is_day(current),"DateRange(add(DCT, day2year(multi(current, 100))), DCT) if find_centry(inputLst, current_pos) else current",

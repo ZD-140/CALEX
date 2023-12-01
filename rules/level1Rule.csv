@@ -1,0 +1,17 @@
+﻿input,output,comment
+"(\d{4})\/(\d{1,2})\/(\d{1,2})","DatePoint(year=search_obj.group(1), month=search_obj.group(2), day=search_obj.group(3))",e.g. 2021/01/01
+"(\d{4})\/(\d{1,2})\/NULL","DatePoint(year=search_obj.group(1), month=search_obj.group(2))",e.g. 2021/01/NULL
+(\d{4})\/NULL\/NULL,DatePoint(year=search_obj.group(1)),e.g. 2021/NULL/NULL
+"NULL\/(\d{1,2})\/NULL",DatePoint(month=search_obj.group(1)),e.g. NULL/01/NULL
+"NULL\/(\d{1,2})\/(\d{1,2})","DatePoint(month=search_obj.group(1), day=search_obj.group(2))",e.g. NULL/01/01
+"NULL\/NULL\/(\d{1,2})",DatePoint(day=search_obj.group(1)),e.g. NULL/NULL/01
+<last>,"str(""None"")","delete all the ""<last>"" appeared in the text"
+last|previous,"str(""<last>"")","change all the ""last"" or ""previous"" to ""<last>"""
+<next>,"str(""None"")","delete all the ""<next>"" appeared in the text"
+next|after,"str(""<next>"")","change all the ""next"" or ""after"" to ""<next>"""
+<few>,"str(""None"")","delete all the ""<few>"" appeared in the text"
+few|several|couple of,"str(""<few>"")","change all the ""few"" or similar words to ""<few>"""
+<century>,"str(""None"")","delete all the ""<century>"" appeared in the text"
+century|centuries,"str(""<century>"")","change all the ""century"" or ""centuries"" to ""<century>"""
+<decade>,"str(""None"")","delete all the ""<decade>"" appeared in the text"
+decades?,"str(""<decade>"")","change all the ""decade"" or ""decades"" to ""<decade>"""
